@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | TechNova Solutions</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172554;
+            background: #f8fbff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .logo span {
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #334155;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #2563eb;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 140px 20px 80px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe, #f8fbff);
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.35;
+        }
+
+        .circle-one {
+            width: 350px;
+            height: 350px;
+            background: #60a5fa;
+            top: -100px;
+            left: -100px;
+        }
+
+        .circle-two {
+            width: 300px;
+            height: 300px;
+            background: #3b82f6;
+            right: -80px;
+            top: 100px;
+        }
+
+        .circle-three {
+            width: 220px;
+            height: 220px;
+            background: #93c5fd;
+            bottom: -80px;
+            left: 40%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+
+        .hero-badge,
+        .section-tag {
+            display: inline-block;
+            color: #2563eb;
+            background: #dbeafe;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.1;
+            color: #0f172a;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span,
+        .section-heading h2 span,
+        .cta-content h2 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #475569;
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            color: white;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            color: #2563eb;
+            background: white;
+            border: 1px solid #bfdbfe;
+        }
+
+        .btn-secondary:hover {
+            background: #eff6ff;
+        }
+
+        /* ================= SECTIONS ================= */
+
+        .about-section,
+        .services-section {
+            padding: 100px 20px;
+        }
+
+        .about-section {
+            background: white;
+        }
+
+        .services-section {
+            background: #f1f7ff;
+        }
+
+        .section-container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 55px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(34px, 5vw, 52px);
+            line-height: 1.15;
+            color: #0f172a;
+            margin-bottom: 18px;
+        }
+
+        .section-heading p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        /* ================= ABOUT CARDS ================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e0edff;
+            transition: 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(37, 99, 235, 0.15);
+        }
+
+        .about-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dbeafe;
+            border-radius: 15px;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-card h3 {
+            color: #0f172a;
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .about-card p {
+            color: #64748b;
+        }
+
+        /* ================= SERVICE CARDS ================= */
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #dbeafe;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.12);
+        }
+
+        .service-card.featured {
+            background: linear-gradient(145deg, #2563eb, #1d4ed8);
+            color: white;
+        }
+
+        .service-card.featured h3,
+        .service-card.featured p {
+            color: white;
+        }
+
+        .service-icon {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #64748b;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta-section {
+            padding: 90px 20px;
+            background: linear-gradient(135deg, #172554, #2563eb);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(35px, 5vw, 55px);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .cta-content h2 span {
+            color: #bfdbfe;
+        }
+
+        .cta-content p {
+            margin-bottom: 30px;
+            color: #dbeafe;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 65px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        footer .logo {
+            color: white;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #94a3b8;
+        }
+
+        footer h4 {
+            margin-bottom: 15px;
+        }
+
+        footer a:not(.logo) {
+            display: block;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+
+        footer a:not(.logo):hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1150px;
+            margin: 45px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            text-align: center;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                background: white;
+                padding: 15px 25px;
+                box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 12px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .about-grid,
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .navbar-container {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .hero {
+                padding: 120px 15px 70px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .about-card,
+            .service-card {
+                padding: 25px;
+            }
+        }
+
+        /* ================= CONTACT FORM ================= */
+
+        form {
+            width: 100%;
+        }
+
+        form>div {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            color: #172554;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: #f8fbff;
+            color: #0f172a;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        form br {
+            display: none;
+        }
+
+        form .btn {
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        @media (max-width: 700px) {
+
+            form .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+        <div class="navbar-container">
+
+            <a href="index.html" class="logo">
+                Tech<span>Nova</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle">
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+
+    <!-- ================= CONTACT HERO ================= -->
+    <section class="hero">
+
+        <div class="hero-background">
+            <div class="circle circle-one"></div>
+            <div class="circle circle-two"></div>
+            <div class="circle circle-three"></div>
+        </div>
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                💬 Let's Connect
+            </div>
+
+            <h1>
+                Let's Build
+                <span>Something Great.</span>
+            </h1>
+
+            <p>
+                Have a project, idea or question? Our team would love to
+                hear from you and explore how we can help.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section class="about-section">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    CONTACT US
+                </span>
+
+                <h2>
+                    Start A
+                    <span>Conversation.</span>
+                </h2>
+
+                <p>
+                    Tell us about your idea and we'll get back to you soon.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <!-- CONTACT INFO -->
+                <div class="about-card">
+
+                    <div class="about-icon">
+                        📧
+                    </div>
+
+                    <h3>Email Us</h3>
+
+                    <p>
+                        hello@technova.com
+                    </p>
+
+                    <p>
+                        We usually respond within 24 hours.
+                    </p>
+
+                </div>
+
+
+                <!-- LOCATION -->
+                <div class="about-card">
+
+                    <div class="about-icon">
+                        📍
+                    </div>
+
+                    <h3>Our Location</h3>
+
+                    <p>
+                        Pune, Maharashtra
+                    </p>
+
+                    <p>
+                        India
+                    </p>
+
+                </div>
+
+
+                <!-- PHONE -->
+                <div class="about-card">
+
+                    <div class="about-icon">
+                        📞
+                    </div>
+
+                    <h3>Call Us</h3>
+
+                    <p>
+                        +91 98765 43210
+                    </p>
+
+                    <p>
+                        Monday – Friday
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT FORM ================= -->
+    <section class="services-section">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    SEND A MESSAGE
+                </span>
+
+                <h2>
+                    Tell Us About
+                    <span>Your Project.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <form>
+
+                    <div class="about-grid">
+
+                        <div>
+                            <label for="name">
+                                Full Name
+                            </label>
+
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+
+
+                        <div>
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+
+                    </div>
+
+
+                    <br>
+
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input type="text" id="subject" name="subject" placeholder="What would you like to discuss?"
+                        required>
+
+
+                    <br>
+
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea id="message" name="message" rows="7" placeholder="Tell us about your project..."
+                        required></textarea>
+
+
+                    <br>
+
+
+                    <button type="submit" class="btn btn-primary">
+                        Send Message →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+    <section class="cta-section">
+
+        <div class="section-container">
+
+            <div class="cta-content">
+
+                <h2>
+                    Ready To Start
+                    <span>Your Journey?</span>
+                </h2>
+
+                <p>
+                    Your next big idea could be the beginning of something amazing.
+                </p>
+
+                <a href="services.html" class="btn btn-primary">
+                    Explore Our Services →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+
+        <div class="footer-container">
+
+            <div>
+                <a href="index.html" class="logo">
+                    Tech<span>Nova</span>
+                </a>
+
+                <p>
+                    Innovating today, building tomorrow.
+                </p>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+
+                <p>hello@technova.com</p>
+                <p>Pune, India</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © <span id="copyright"></span> TechNova Solutions.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- <script src="script.js"></script> -->
+
+</body>
+
+</html>
